@@ -1,5 +1,6 @@
 package com.codepath.articlesearch
 
+import android.R.attr.radius
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+
 
 const val ITEM_EXTRA = "ITEM_EXTRA"
 private const val TAG = "ArticleAdapter"
@@ -53,6 +56,7 @@ class ItemAdapter(private val context: Context, private val items: List<Items>) 
 
             Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500"+item.poster_url)
+                .transform(RoundedCorners(30))
                 .into(mediaImageView)
         }
 
