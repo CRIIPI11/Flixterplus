@@ -19,9 +19,9 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         // TODO: Find the views for the screen
-        mediaImageView = findViewById(R.id.mediaImage)
-        titleTextView = findViewById(R.id.mediaTitle)
-        abstractTextView = findViewById(R.id.mediaAbstract)
+        mediaImageView = findViewById(R.id.poster)
+        titleTextView = findViewById(R.id.name)
+        abstractTextView = findViewById(R.id.overview)
 
         // TODO: Get the extra from the Intent
         val item = intent.getSerializableExtra(ITEM_EXTRA) as Items

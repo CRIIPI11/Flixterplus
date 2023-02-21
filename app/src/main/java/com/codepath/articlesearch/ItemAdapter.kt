@@ -9,13 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlin.math.log
 
 const val ITEM_EXTRA = "ITEM_EXTRA"
 private const val TAG = "ArticleAdapter"
 
-class ArticleAdapter(private val context: Context, private val items: List<Items>) :
-    RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
+class ItemAdapter(private val context: Context, private val items: List<Items>) :
+    RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,9 +32,12 @@ class ArticleAdapter(private val context: Context, private val items: List<Items
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
 
-        private val mediaImageView = itemView.findViewById<ImageView>(R.id.mediaImage)
-        private val titleTextView = itemView.findViewById<TextView>(R.id.mediaTitle)
-        private val abstractTextView = itemView.findViewById<TextView>(R.id.mediaAbstract)
+        private val mediaImageView = itemView.findViewById<ImageView>(R.id.poster)
+        private val titleTextView = itemView.findViewById<TextView>(R.id.name)
+        private val abstractTextView = itemView.findViewById<TextView>(R.id.overview)
+        private val dateTextView = itemView.findViewById<TextView>(R.id.date)
+        private val polTextView = itemView.findViewById<TextView>(R.id.popularity)
+        private val rateTextView = itemView.findViewById<TextView>(R.id.rating)
 
         init {
             itemView.setOnClickListener(this)
@@ -44,6 +46,10 @@ class ArticleAdapter(private val context: Context, private val items: List<Items
         fun bind(item: Items) {
             titleTextView.text = item.title
             abstractTextView.text = item.desc
+            dateTextView.text = "Air Date\n"+item.date
+            polTextView.text = "Popularity\n"+item.popularity
+            rateTextView.text = "Rating\n"+item.rate
+
 
             Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500"+item.poster_url)
